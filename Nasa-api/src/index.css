@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body{
+    background-Image: url('./assets/planets.jpg');
+    background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

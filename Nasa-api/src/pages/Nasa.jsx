@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Nasa.css";
 import Navbar from "../components/Navbar";
 import globe from "../assets/globe.gif";
+import planets from "../assets/planets.jpg";
 
 const api = import.meta.env.VITE_NASA_KEY;
 const baseurl = "https://api.nasa.gov/planetary/apod";
@@ -20,6 +21,7 @@ function Nasa() {
           },
         });
         setData(response.data);
+        console.log("hello");
       } catch (error) {
         console.error("Error fetching NASA data:", error);
       } finally {
@@ -33,7 +35,7 @@ function Nasa() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto my-8 p-8 bg-white rounded shadow-lg ">
+      <div className="container mx-auto my-8 p-8 rounded shadow-lg ">
         {loading ? (
           <div className="flex items-center justify-center">
             <img
@@ -49,18 +51,21 @@ function Nasa() {
           </div>
         ) : (
           <>
-            <h1 className="text-center text-3xl font-bold mb-4">
-              {data.title}
-            </h1>
-            <p className="text-gray-600 mb-2">{data.date}</p>
-            <p className="text-gray-800 mb-4">{data.explanation}</p>
-            {data.hdurl && (
-              <img
-                src={data.hdurl}
-                alt={data.title}
-                className="mx-auto rounded-lg shadow-lg"
-              />
-            )}
+            <div>
+                  <h1 className="text-center text-3xl font-bold mb-4 ">
+                    {data.title}
+                  </h1>
+                  
+                  <p className="text-white mb-2">{data.date}</p>
+                  <p className="text-white mb-4">{data.explanation}</p>
+                  {data.hdurl && (
+                    <img
+                      src={data.hdurl}
+                      alt={data.title}
+                      className="mx-auto rounded-lg shadow-lg"
+                    />
+                  )}
+            </div>      
           </>
         )}
       </div>
