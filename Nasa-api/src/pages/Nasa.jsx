@@ -52,12 +52,12 @@ function Nasa() {
         ) : (
           <>
             <div>
-                  <h1 className="text-center text-3xl font-bold mb-4 ">
+                  <h1 className="text-center  font-bold mb-4 font-serif text-5xl	">
                     {data.title}
                   </h1>
                   
-                  <p className="text-white mb-2">{data.date}</p>
-                  <p className="text-white mb-4">{data.explanation}</p>
+                  <p className="text-white mb-2 ">{data.date}</p>
+                  <p className="text-white mb-4 font-medium">{data.explanation}</p>
                   {data.hdurl && (
                     <img
                       src={data.hdurl}

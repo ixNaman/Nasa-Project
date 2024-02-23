@@ -1,21 +1,19 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Card, Button } from "antd";
+import { Card } from "antd";
 import Navbar from "../components/Navbar";
 import "./Nasa.css";
 import globe from "../assets/globe.gif";
-import planets from "../assets/planets.jpg";
+import "../pages/MarsPhotos.css"
 
-
-const baseUrl =
-  "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos";
+const baseUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos";
 const apiKey = import.meta.env.VITE_NASA_KEY;
 
 const MarsPhotos = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async (page) => {
+  const fetchData = async () => {
     try {
       const response = await axios.get(baseUrl, {
         params: {
@@ -25,7 +23,7 @@ const MarsPhotos = () => {
         },
       });
       setData(response.data.photos);
-      console.log(response.data.photos)
+      console.log(response.data.photos);
     } catch (error) {
       console.error("Error fetching NASA data:", error);
     } finally {
@@ -58,26 +56,23 @@ const MarsPhotos = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
-            // backgroundImage:`url(${planets})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-
           }}
         >
           {data.map((info, index) => (
             <Card
               key={index}
               title={`Photo ID: ${info.id}`}
+              className="glass-effect" 
               style={{ width: 300, margin: 16 }}
             >
               <p className="font-bold">Earth Date: {info.earth_date}</p>
               <img
-                className="h-128 w-124 "
+                className="h-128 w-124"
                 src={info.img_src}
                 alt={`Mars Photo ${index}`}
               />
               <p className="font-bold">{info.rover.name}</p>
-              <p className="font-bold">Camera:{info.camera.name}</p>
+              <p className="font-bold">Camera: {info.camera.name}</p>
             </Card>
           ))}
         </div>

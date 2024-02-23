@@ -4,6 +4,7 @@ import { Card, Button } from "antd";
 import "./Nasa.css";
 import Navbar from "../components/Navbar";
 import globe from "../assets/globe.gif";
+import "../pages/Moon.css";
 
 const baseUrl = "https://images-api.nasa.gov/search?q=apollo%2022";
 
@@ -54,7 +55,11 @@ function Moon() {
           }}
         >
           {itemsArray.slice(0, 1).map((item, index) => (
-            <Card key={index} title={item.data[0].title}>
+            <Card
+              key={index}
+              title={item.data[0].title}
+              className="glass-effect"
+            >
               {" "}
               <div className="flex items-center justify-center ">
                 <Button onClick={() => fetchAdditionalData(item.href)}>
@@ -62,7 +67,14 @@ function Moon() {
                 </Button>
 
                 {selectedItem && (
-                  <iframe src={selectedItem[0]} allowFullScreen></iframe>
+                  <iframe
+                    src={selectedItem[0]}
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    className="mt-6"
+                    width="560"
+                    height="315"
+                    allowFullScreen
+                  ></iframe>
                 )}
               </div>
             </Card>
