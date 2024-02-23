@@ -13,7 +13,7 @@ function Home() {
         className="text-blue text-center font-bold mb-4 font-serif text-1xl"
         style={{
           position: "absolute",
-          bottom: "50%",
+          bottom: "48%",
           left: "50%",
           transform: "translate(-50%,-50%)",
         }}
@@ -31,7 +31,7 @@ function Home() {
       >
          — Neil deGrasse Tyson
       </p>
-      <img src={BlackHole} className="opacity-100">
+      <img src={BlackHole} >
       </img>
     </div>
   );

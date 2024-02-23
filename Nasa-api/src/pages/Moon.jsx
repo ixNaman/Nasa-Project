@@ -44,7 +44,7 @@ function Moon() {
     <>
       <Navbar />
       {loading ? (
-        <div className="loading-spinner">
+        <div className="flex items-center justify-center">
           <img src={globe} alt="Loading..." />
         </div>
       ) : (
