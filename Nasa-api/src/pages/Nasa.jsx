@@ -21,7 +21,7 @@ function Nasa() {
           },
         });
         setData(response.data);
-        console.log("hello");
+        console.log(data);
       } catch (error) {
         console.error("Error fetching NASA data:", error);
       } finally {
@@ -52,20 +52,33 @@ function Nasa() {
         ) : (
           <>
             <div>
-                  <h1 className="text-center  font-bold mb-4 font-serif text-5xl	">
-                    {data.title}
-                  </h1>
-                  
-                  <p className="text-white mb-2 ">{data.date}</p>
-                  <p className="text-white mb-4 font-medium">{data.explanation}</p>
-                  {data.hdurl && (
-                    <img
-                      src={data.hdurl}
-                      alt={data.title}
-                      className="mx-auto rounded-lg shadow-lg"
-                    />
-                  )}
-            </div>      
+              <h1 className="text-center font-bold mb-4 font-serif text-5xl">
+                {data.title}
+              </h1>
+              <p className="text-white mb-2 ">{data.date}</p>
+              <p className="text-white mb-4 font-medium">{data.explanation}</p>
+
+              {data.media_type === "image" && data.hdurl && (
+                <img
+                  src={data.hdurl}
+                  alt={data.title}
+                  className="mx-auto rounded-lg shadow-lg"
+                />
+              )}
+
+              {data.media_type === "video" && data.url && (
+                <div className=" flex items-center justify-center ">
+                  <iframe
+                    title={data.title}
+                    src={data.url}
+                    className="embed-responsive-item rounded-lg shadow-lg "
+                    height="315"
+                    width="100%"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
+            </div>
           </>
         )}
       </div>
